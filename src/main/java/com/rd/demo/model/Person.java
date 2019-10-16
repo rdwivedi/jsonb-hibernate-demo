@@ -1,12 +1,15 @@
 package com.rd.demo.model;
 
+import com.rd.demo.hibernate.JsonPersonUserType;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
 import java.util.Map;
 
 @Entity
 @Table(name = "person")
+@TypeDef(name = "JsonPersonUserType", typeClass = JsonPersonUserType.class)
 public class Person {
 
     @Id
@@ -17,7 +20,7 @@ public class Person {
 
     private String lastName;
 
-    @Type(type = "JsonDataUserType")
+    @Type(type = "JsonPersonUserType")
     private Map<String, String> additionalData;
 
     public Long getId() {

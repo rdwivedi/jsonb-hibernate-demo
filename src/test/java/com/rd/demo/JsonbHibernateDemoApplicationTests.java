@@ -23,11 +23,11 @@ public class JsonbHibernateDemoApplicationTests {
 		repository.deleteAll();
 
 		Person person = new Person();
-		person.setFirstName("John");
-		person.setLastName("Doe");
+		person.setFirstName("Ritesh");
+		person.setLastName("Dwivedi");
 
 		Map<String, String> additionalData = new HashMap<>();
-		additionalData.put("favorite color", "red");
+		additionalData.put("favorite color", "blue");
 		additionalData.put("hair color", "brown");
 		additionalData.put("eye color", "blue");
 		person.setAdditionalData(additionalData);
