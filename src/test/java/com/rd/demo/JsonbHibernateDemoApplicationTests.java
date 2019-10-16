@@ -2,6 +2,7 @@ package com.rd.demo;
 
 import com.rd.demo.model.Person;
 import com.rd.demo.repositories.PersonRepository;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +20,32 @@ public class JsonbHibernateDemoApplicationTests {
 	private PersonRepository repository;
 
 	@Test
-	public void contextLoads() {
-		repository.deleteAll();
+	public void createPerson() {
+		//repository.deleteAll();
 
 		Person person = new Person();
-		person.setFirstName("Ritesh");
-		person.setLastName("Dwivedi");
+		person.setFirstName("meraj");
+		person.setLastName("ahmad");
 
 		Map<String, String> additionalData = new HashMap<>();
-		additionalData.put("favorite color", "blue");
-		additionalData.put("hair color", "brown");
-		additionalData.put("eye color", "blue");
+		additionalData.put("workex", "10");
+		additionalData.put("city", "rampur");
+		additionalData.put("Tech stack", "java");
 		person.setAdditionalData(additionalData);
 
 		repository.save(person);
 	}
 
+	@Test
+	public void findPerson() {
+		Person person = repository.findOne(Integer.toUnsignedLong(3));
+		Assert.assertEquals("ritesh", person.getFirstName());
+	}
+
+	@Test
+
+	public void getAdditionalDetails(){
+		Person person = repository.findOne(Integer.toUnsignedLong(6));
+		Assert.assertEquals("rampur", person.getAdditionalData().get("city"));
+	}
 }
